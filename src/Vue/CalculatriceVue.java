@@ -1,9 +1,10 @@
  package Vue;
-// la seule fonctionnalité de la vue est d'afficher 
-// ce que l'utilisateur va voir, aucun calculs ne sera fait
 
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+//la seule fonctionnalité de la vue est d'afficher 
+//ce que l'utilisateur va voir, aucun calculs ne sera fait
 
 public class CalculatriceVue extends JFrame{
 	
@@ -31,6 +32,7 @@ public class CalculatriceVue extends JFrame{
 		// Affectation des valeurs des listes de JCombobox
 		
 		Integer[] listeNombre = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		Integer[] listeNombre2 = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 		 String[] listeOperateur = new String[] {"+", "-"};
 		
 		// affectation des JCombobox qui possède une liste à une variable 
@@ -79,9 +81,14 @@ public class CalculatriceVue extends JFrame{
 
 	// affiche le résultat du calcul dans le label Resultat
 	
-	public void setAffichageBonMauvais(String BonOuMauvais){
+	public void setAffichageAddition(String BonOuMauvais, int resultatAddition){
 
-		affichageBonMauvais.setText(BonOuMauvais);
+		affichageBonMauvais.setText(BonOuMauvais+resultatAddition);
+
+	}
+	public void setAffichageSoustraction(String BonOuMauvais, int resultatSoustraction){
+
+		affichageBonMauvais.setText(BonOuMauvais+resultatSoustraction);
 
 	}
 	
@@ -108,5 +115,4 @@ public class CalculatriceVue extends JFrame{
 		JOptionPane.showMessageDialog(this, messageErreur);
 
 	}
-
 }
