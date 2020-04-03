@@ -1,4 +1,4 @@
-package Modèle;
+package Modele;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -19,7 +19,6 @@ public class CalculatriceModele {
 	public void addition(int premierNombre, int deuxiemeNombre){
 						
 		 sommeAddition = premierNombre + deuxiemeNombre;
-		
 		}
 	
 	public void soustraction(int premierNombre, int deuxiemeNombre) {
@@ -29,7 +28,7 @@ public class CalculatriceModele {
 	
 	// méthode qui va fermer le programme au bout de 10s
 	
-	public static  void fermetureProgramme() {
+	public void fermetureProgramme() {
 		
 		Timer fermetureApresResultat = new Timer();  
 		fermetureApresResultat.schedule(new TimerTask() {
@@ -65,5 +64,4 @@ public class CalculatriceModele {
 		
 		return sommeSoustraction;
 	}
-
 }

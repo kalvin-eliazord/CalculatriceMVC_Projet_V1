@@ -1,4 +1,4 @@
-package Modèle;
+package Modele;
 import Controleur.CalculatriceControleur;
 import Vue.CalculatricePub;
 import Vue.CalculatriceVue;

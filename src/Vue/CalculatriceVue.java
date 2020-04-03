@@ -32,7 +32,6 @@ public class CalculatriceVue extends JFrame{
 		// Affectation des valeurs des listes de JCombobox
 		
 		Integer[] listeNombre = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-		Integer[] listeNombre2 = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 		 String[] listeOperateur = new String[] {"+", "-"};
 		
 		// affectation des JCombobox qui possède une liste à une variable 
@@ -113,6 +112,5 @@ public class CalculatriceVue extends JFrame{
 	public void affichageMsgErreur(String messageErreur){
 
 		JOptionPane.showMessageDialog(this, messageErreur);
-
 	}
 }

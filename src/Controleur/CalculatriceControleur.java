@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
 
-import Modèle.CalculatriceModele;
+import Modele.CalculatriceModele;
 import Vue.CalculatricePub;
 import Vue.CalculatriceVue;
 
@@ -18,7 +18,7 @@ public class CalculatriceControleur {
 	private CalculatriceModele leModele;
 	private CalculatricePub laPub;
 	
-	// constructeur qui prend en paramètre une instance de la classe Vue, du Modele et de la classe
+	// constructeur qui prend en paramètre une instance de la classe Vue, du Modele et de la Pub
 	
 	public CalculatriceControleur(CalculatriceVue laVue, CalculatriceModele leModele, CalculatricePub laPub) {
 		
@@ -71,7 +71,7 @@ public class CalculatriceControleur {
 					
 				// le programme se ferme 10s après l'affichage 
 					
-					CalculatriceModele.fermetureProgramme();
+					leModele.fermetureProgramme();
 					
 				} // si le résultat proposé n'est pas égal au résultat de l'opération
 				
@@ -79,7 +79,7 @@ public class CalculatriceControleur {
 				
 					laVue.setAffichageAddition(" Le résultat choisit est MAUVAIS! C'était: ", resultatAddition);
 					
-					CalculatriceModele.fermetureProgramme();
+					leModele.fermetureProgramme();
 					}
 				}
 				else {			
@@ -96,7 +96,7 @@ public class CalculatriceControleur {
 						
 					//  le programme se ferme 10s après l'affichage 
 						
-						CalculatriceModele.fermetureProgramme();
+						leModele.fermetureProgramme();
 				
 					// empêche d'afficher une réponse si la somme de l'opération est < 0 et si elle est différente du résultat proposé
 						
@@ -106,7 +106,7 @@ public class CalculatriceControleur {
 						
 						//  le programme se ferme 10s après l'affichage 
 						
-						CalculatriceModele.fermetureProgramme();
+						leModele.fermetureProgramme();
 					}
 			     }
 		
@@ -115,11 +115,10 @@ public class CalculatriceControleur {
 			if (resultatAddition > 10 || resultatSoustraction < 0) {
 				
 				// le résultat ne s'affiche pas si il est >10 ou <0
+				
 				laVue.setAffichageResultatNettoyage();
 				laVue.affichageMsgErreur("Le résultat ne doit pas dépasser 10 ou descendre en dessous de 0! Choisis une autre opération!");	
 			}		
-
 		}
-	}
-		
+	}		
 }

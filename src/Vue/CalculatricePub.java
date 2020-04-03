@@ -29,5 +29,4 @@ public class CalculatricePub extends JFrame{
 		this.add(fenetrePub);	
 		
 	}
-
 }
