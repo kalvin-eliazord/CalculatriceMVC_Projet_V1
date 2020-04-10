@@ -1,12 +1,11 @@
 package Vue;
 
 import java.awt.Color;
-
-// la classe qui contient la publicité 
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+//la classe qui contient la publicité 
 
 public class CalculatricePub extends JFrame{
 	

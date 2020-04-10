@@ -38,7 +38,7 @@ public class CalculatriceModele {
 				System.exit(0);
 		}
 			
-	},10000 // les secondes du délais
+	},10000 // les milisecondes du délais
 				
 		);
 	}
