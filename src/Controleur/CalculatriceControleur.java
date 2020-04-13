@@ -27,7 +27,7 @@ public class CalculatriceControleur {
 		
 		// méthode qui va bloquer le programme pendant 10s pour la publicité 
 		
-	//	this.leModele.pauseProgramme();
+		this.leModele.pauseProgramme();
 				
 		// je rend visible la calculatrice et je fais disparaitre la pub 
 				
