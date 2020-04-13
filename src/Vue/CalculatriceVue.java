@@ -80,10 +80,6 @@ public class CalculatriceVue extends JFrame{
 		return (int) resultatPropose.getSelectedItem();
 	}
 
-	public void setAffichageResultat(Integer resultat) {
-		
-		affichageResultat.setText(""+resultat+"");
-	}
 	// affiche le résultat du calcul dans le label Resultat
 	
 	public void setAffichageBonMauvais(String BonOuMauvais, int resultat){
