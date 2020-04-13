@@ -1,14 +1,13 @@
 package Controleur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
 
 import Modele.CalculatriceModele;
 import Vue.CalculatricePub;
 import Vue.CalculatriceVue;
 
 // le controleur fait le pont 
-// entre la pub, la vue et le modèle
+// entre la vue et le modèle
 
 public class CalculatriceControleur {
 	
@@ -18,7 +17,7 @@ public class CalculatriceControleur {
 	private CalculatriceModele leModele;
 	private CalculatricePub laPub;
 	
-	// constructeur qui prend en paramètre une instance de la classe Vue, du Modele et de la Pub
+	// constructeur qui prend en paramètre une instance de la classe Vue et du Modele
 	
 	public CalculatriceControleur(CalculatriceVue laVue, CalculatriceModele leModele, CalculatricePub laPub) {
 		
@@ -28,32 +27,27 @@ public class CalculatriceControleur {
 		
 		// méthode qui va bloquer le programme pendant 10s pour la publicité 
 		
-		this.leModele.pauseProgramme();
-		
+	//	this.leModele.pauseProgramme();
+				
 		// je rend visible la calculatrice et je fais disparaitre la pub 
-		
+				
 		this.laVue.setVisible(true);
 		this.laPub.setVisible(false);
 		
-		// je met en paramètre la classe ActionBoutonVerif dans l'actionlistener de mon bouton Verification
-		
-		this.laVue.ecouteurBoutonVerification(new ActionBoutonVerif());
-
+		this.laVue.ecouteurBoutonVerification(new RecepteurBoutonVerif());
 	}
 	
-	class ActionBoutonVerif implements ActionListener{
-
+	class RecepteurBoutonVerif implements ActionListener{
+		
 		public void actionPerformed(ActionEvent e) {
 				
 			// déclaration et initialisation des variables qui vont être 
-			// utilisées en paramètre de fonction
+			// utilisés en paramètre de fonction
 
 			int premierNombre = laVue.getPremierNombre();
-			int deuxiemeNombre = laVue.getDeuxiemeNombre();  
+			int deuxiemeNombre = laVue.getDeuxiemeNombre(); 
 			
-			int resultatAddition = leModele.getSommeAddition();
-			int resultatSoustraction = leModele.getSommeSoustraction();
-			
+				
 				//condition qui va faire une addition ou une soustraction 
 				//en fonction de l'opérateur selectionné
 				
@@ -62,63 +56,76 @@ public class CalculatriceControleur {
 				leModele.addition(premierNombre, deuxiemeNombre);
 				
 				//condition qui va vérifier si le résultat de l'addition  
-				// est égal au résultat proposé par l'élève et afficher Bon ou Mauvais et
-				//qui vérifie pour empêcher d'afficher une réponse si la somme est > 10
+				// est égal au résultat proposé par l'élève et afficher Bon ou Mauvais
 				
-				if (resultatAddition == laVue.getResultatPropose() && resultatAddition <= 10){
-
-					laVue.setAffichageAddition(" Le résultat choisit est BON! C'était bien: ", resultatAddition);
+				if (leModele.getSommeAddition() == laVue.getResultatPropose()){
 					
-				// le programme se ferme 10s après l'affichage 
+					int resultat = leModele.getSommeAddition();
+					laVue.setAffichageBonMauvais(" Le résultat choisit est BON! C'était bien: ", resultat);
+	
+				    //  le programme se ferme 10s après l'affichage 
 					
-					leModele.fermetureProgramme();
+					CalculatriceModele.fermetureProgramme();
 					
-				} // si le résultat proposé n'est pas égal au résultat de l'opération
-				
-				 else if (resultatAddition != laVue.getResultatPropose() && resultatAddition <= 10){
-				
-					laVue.setAffichageAddition(" Le résultat choisit est MAUVAIS! C'était: ", resultatAddition);
 					
-					leModele.fermetureProgramme();
+				} else {
+					
+					// condition pour empêcher d'afficher une réponse si la somme est > 10
+					
+					if (leModele.getSommeAddition() <= 10) {
+					
+						int resultat = leModele.getSommeAddition();	
+						laVue.setAffichageBonMauvais(" Le résultat choisit est MAUVAIS! C'était : ", resultat);
+					
+					   //  le programme se ferme 10s après l'affichage 
+						
+						CalculatriceModele.fermetureProgramme();
 					}
-				}
-				else {			
+						}
+			
+				} else {			
 					
 					leModele.soustraction(premierNombre, deuxiemeNombre);
 					
 					//condition qui va vérifier si le résultat de la soustraction  
 					// est égal au résultat proposé par l'élève et afficher Bon ou Mauvais
-					// et pour empêcher d'afficher une réponse si la somme est < 0
 					
-					if (resultatSoustraction == laVue.getResultatPropose() && resultatSoustraction >= 0 ){
-					
-						laVue.setAffichageSoustraction(" Le résultat choisit est BON! C'était bien: ", resultatSoustraction);
+					if (leModele.getSommeSoustraction() == laVue.getResultatPropose() && leModele.getSommeSoustraction() >= 0 ){
+							
+						int resultat = leModele.getSommeSoustraction();	
+						laVue.setAffichageBonMauvais(" Le résultat choisit est BON! C'était bien: ", resultat);
 						
-					//  le programme se ferme 10s après l'affichage 
+					    //  le programme se ferme 10s après l'affichage 
 						
-						leModele.fermetureProgramme();
-				
-					// empêche d'afficher une réponse si la somme de l'opération est < 0 et si elle est différente du résultat proposé
+						CalculatriceModele.fermetureProgramme();
+							
+					} else {
 						
-					} else if (resultatSoustraction != laVue.getResultatPropose() && resultatSoustraction >= 0) {
-	
-						laVue.setAffichageSoustraction(" Le résultat choisit est MAUVAIS! C'était: ", resultatSoustraction);
+						// condition pour empêcher d'afficher une réponse si la somme est < 0
 						
-						//  le programme se ferme 10s après l'affichage 
+						if (leModele.getSommeSoustraction() >= 0) {
 						
-						leModele.fermetureProgramme();
+							int resultat = leModele.getSommeSoustraction();
+							laVue.setAffichageBonMauvais(" Le résultat choisit est MAUVAIS! C'était : ", resultat);
+						
+						    //  le programme se ferme 10s après l'affichage 
+						
+							CalculatriceModele.fermetureProgramme();
+						}
 					}
-			     }
-		
+			}
+			
 			// condition qui va afficher un msg d'erreur si les résultats de l'opération sont > 10 ou < 0
 			
-			if (resultatAddition > 10 || resultatSoustraction < 0) {
+			if (leModele.getSommeAddition() > 10 || leModele.getSommeSoustraction() < 0) {
 				
 				// le résultat ne s'affiche pas si il est >10 ou <0
 				
-				laVue.setAffichageResultatNettoyage();
-				laVue.affichageMsgErreur("Le résultat ne doit pas dépasser 10 ou descendre en dessous de 0! Choisis une autre opération!");	
+				laVue.setAffichageBonMauvaisNettoyage();
+				laVue.affichageMsgErreur("Le résultat ne doit pas dépasser 10 ou descendre en dessous de 0! Choisis une autre opération!");		
 			}		
+
 		}
-	}		
+	}
+		
 }

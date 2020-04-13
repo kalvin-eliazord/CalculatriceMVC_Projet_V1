@@ -28,7 +28,7 @@ public class CalculatriceModele {
 	
 	// méthode qui va fermer le programme au bout de 10s
 	
-	public void fermetureProgramme() {
+	public static void fermetureProgramme() {
 		
 		Timer fermetureApresResultat = new Timer();  
 		fermetureApresResultat.schedule(new TimerTask() {

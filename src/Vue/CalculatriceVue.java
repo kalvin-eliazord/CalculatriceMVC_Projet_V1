@@ -17,6 +17,7 @@ public class CalculatriceVue extends JFrame{
 	private JComboBox<Integer> resultatPropose = new JComboBox<Integer>();
 	private JButton boutonVerification = new JButton("Vérifier le Résultat");
 	private JLabel affichageBonMauvais = new JLabel(" ");
+	private JLabel affichageResultat = new JLabel(" ");
 	private JPanel fenetreCalcul = new JPanel();
 	
 	//constructeur de la classe CalculatriceVue
@@ -51,6 +52,7 @@ public class CalculatriceVue extends JFrame{
 		fenetreCalcul.add(resultatPropose);
 		fenetreCalcul.add(boutonVerification);
 		fenetreCalcul.add(affichageBonMauvais);
+		fenetreCalcul.add(affichageResultat);
 		
 		this.add(fenetreCalcul);
 	
@@ -78,25 +80,22 @@ public class CalculatriceVue extends JFrame{
 		return (int) resultatPropose.getSelectedItem();
 	}
 
+	public void setAffichageResultat(Integer resultat) {
+		
+		affichageResultat.setText(""+resultat+"");
+	}
 	// affiche le résultat du calcul dans le label Resultat
 	
-	public void setAffichageAddition(String BonOuMauvais, int resultatAddition){
+	public void setAffichageBonMauvais(String BonOuMauvais, int resultat){
 
-		affichageBonMauvais.setText(BonOuMauvais+resultatAddition);
-
-	}
-	public void setAffichageSoustraction(String BonOuMauvais, int resultatSoustraction){
-
-		affichageBonMauvais.setText(BonOuMauvais+resultatSoustraction);
-
+		affichageBonMauvais.setText(BonOuMauvais+resultat);
 	}
 	
 	// méthode qui va vider l'affichage
 	
-	public void setAffichageResultatNettoyage(){
+	public void setAffichageBonMauvaisNettoyage(){
 
-		affichageBonMauvais.setText(" ");
-		
+		affichageBonMauvais.setText(" ");		
 	}
 
 	// méthode qui ajoute une action de type event à un boutton 
