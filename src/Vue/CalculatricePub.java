@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 public class CalculatricePub extends JFrame{
 	
-	private JLabel affichagePub = new JLabel("PUBLICITE");
+	private JLabel affichagePub = new JLabel("PUBLICITE: Venez manger chez KFC!!");
 	private JPanel fenetrePub = new JPanel();
 	
 	public CalculatricePub() {
@@ -18,7 +18,7 @@ public class CalculatricePub extends JFrame{
 		
 		this.setTitle("PUBLICITE");
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); // plein écran par défaut
-		fenetrePub.setBackground(Color.yellow);
+		fenetrePub.setBackground(Color.red);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setVisible(true);
 		

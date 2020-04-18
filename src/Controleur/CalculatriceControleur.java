@@ -46,8 +46,7 @@ public class CalculatriceControleur {
 
 			int premierNombre = laVue.getPremierNombre();
 			int deuxiemeNombre = laVue.getDeuxiemeNombre(); 
-			
-				
+						
 				//condition qui va faire une addition ou une soustraction 
 				//en fonction de l'opérateur selectionné
 				
@@ -66,7 +65,6 @@ public class CalculatriceControleur {
 				    //  le programme se ferme 10s après l'affichage 
 					
 					CalculatriceModele.fermetureProgramme();
-					
 					
 				} else {
 					
@@ -117,7 +115,7 @@ public class CalculatriceControleur {
 			
 			// condition qui va afficher un msg d'erreur si les résultats de l'opération sont > 10 ou < 0
 			
-			if (leModele.getSommeAddition() > 10 || leModele.getSommeSoustraction() < 0) {
+			if (leModele.getSommeAddition() > 10 || leModele.getSommeSoustraction() < -0) {
 				
 				// le résultat ne s'affiche pas si il est >10 ou <0
 				
