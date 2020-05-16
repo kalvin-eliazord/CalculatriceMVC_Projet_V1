@@ -15,7 +15,7 @@ public class MainCalculatrice {
         
     	CalculatriceModele leModele = new CalculatriceModele();
         
-        CalculatriceControleur leControleur = new CalculatriceControleur(laVue,leModele, laPub); 
+    	CalculatriceControleur leControleur = new CalculatriceControleur(laVue,leModele, laPub); 
         
     }
 }

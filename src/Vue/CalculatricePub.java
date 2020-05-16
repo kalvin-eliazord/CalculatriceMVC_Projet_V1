@@ -9,6 +9,10 @@ import javax.swing.JPanel;
 
 public class CalculatricePub extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel affichagePub = new JLabel("PUBLICITE: Venez manger chez KFC!!");
 	private JPanel fenetrePub = new JPanel();
 	
