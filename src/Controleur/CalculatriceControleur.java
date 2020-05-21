@@ -7,26 +7,20 @@ import Modele.CalculatriceModele;
 import Vue.CalculatricePub;
 import Vue.CalculatriceVue;
 
-// le controleur fait le pont 
-// entre la vue et le modèle
 public class CalculatriceControleur {
 
-	// attributs
 	private CalculatriceVue laVue;
 	private CalculatriceModele leModele;
 	private CalculatricePub laPub;
 
-	// constructeur qui prend en paramètre une instance de la classe Vue et du Modele
 	public CalculatriceControleur(CalculatriceVue laVue, CalculatriceModele leModele, CalculatricePub laPub) {
 
 		this.laVue = laVue;
 		this.leModele = leModele;
 		this.laPub = laPub;
 
-		// méthode qui va bloquer le programme pendant 10s pour la publicité 
 		this.leModele.pauseProgramme();
 
-		// je rend visible la calculatrice et je fais disparaitre la pub 
 		this.laVue.setVisible(true);
 		this.laPub.setVisible(false);
 
@@ -37,56 +31,38 @@ public class CalculatriceControleur {
 	class RecepteurBoutonVerif implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 
-			// déclaration et initialisation des variables qui vont être 
-			// utilisés en paramètre de fonction
 			int premierNombre = laVue.getPremierNombre();
 			int deuxiemeNombre = laVue.getDeuxiemeNombre(); 
 
-			//condition qui va faire une addition ou une soustraction 
-			//en fonction de l'opérateur selectionné
 			if (laVue.getStringOperateurs() == "+") { 			
-
 				leModele.addition(premierNombre, deuxiemeNombre);
 
-				//condition qui va vérifier si le résultat de l'addition  
-				// est égal au résultat proposé par l'élève et afficher Bon ou Mauvais
 				if (leModele.getSommeAddition() == laVue.getResultatPropose()){
-
 					int resultat = leModele.getSommeAddition();
 					laVue.setAffichageBonMauvais(" Le résultat choisit est BON! C'était bien: ", resultat);
 
-					//  le programme se ferme 10s après l'affichage 
 					leModele.fermetureProgramme();
 
 				} else {
-
 					int resultat = leModele.getSommeAddition();	
 					laVue.setAffichageBonMauvais(" Le résultat choisit est MAUVAIS! C'était : ", resultat);
 
-					//  le programme se ferme 10s après l'affichage 
 					leModele.fermetureProgramme();
 				}
 
 			} else {			
-
 				leModele.soustraction(premierNombre, deuxiemeNombre);
 
-				//condition qui va vérifier si le résultat de la soustraction  
-				// est égal au résultat proposé par l'élève et afficher Bon ou Mauvais
 				if (leModele.getSommeSoustraction() == laVue.getResultatPropose() ){
-
 					int resultat = leModele.getSommeSoustraction();	
 					laVue.setAffichageBonMauvais(" Le résultat choisit est BON! C'était bien: ", resultat);
 
-					//  le programme se ferme 10s après l'affichage 
 					leModele.fermetureProgramme();
 
 				} else {
-
 					int resultat = leModele.getSommeSoustraction();
 					laVue.setAffichageBonMauvais(" Le résultat choisit est MAUVAIS! C'était : ", resultat);
 
-					//  le programme se ferme 10s après l'affichage 
 					leModele.fermetureProgramme();
 				}
 			}
@@ -188,7 +164,7 @@ public class CalculatriceControleur {
 
 						break;
 					}
-					
+
 					// si l'opérateur est "-"
 				} else {
 
